@@ -1,3 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿namespace Core;
 
-Console.WriteLine("Hello, World!");
+public class Download
+{
+    
+}
