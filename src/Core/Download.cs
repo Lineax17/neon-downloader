@@ -1,14 +1,24 @@
 ﻿namespace Core;
 
+using System.Net;
+
 public class Download
 {
-    Download()
+    String filePath;
+
+    public Download()
     {
-        String url;
+        this.filePath = PathHelper.getDownloadDirectory();
+    }
+    
+    public Download(String filePath)
+    {
+        this.filePath = filePath;
     }
 
-    public void download(String url)
+    public void download(String downloadUrl, String fileName)
     {
-        
+        WebClient client = new WebClient();
+        client.DownloadFile(downloadUrl, Path.Combine(filePath, fileName));
     }
 }
