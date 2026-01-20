@@ -15,6 +15,13 @@ public class Program
 
         try
         {
+            // Subscribe to progress changed event
+            downloader.ProgressChanged += (sender, percentage) => 
+            {
+                Console.Write($"\rDownload: {percentage:F1}%");
+            };
+            
+            // Start the download
             await downloader.DownloadAsync(downloadUrl);
             Console.WriteLine("Download successful completed.");
 
