@@ -1,3 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System.CommandLine;
 
-Console.WriteLine("Hello, World!");
+var cli = new CLI.CLI();
+var rootCommand = cli.CreateRootCommand();
+return await rootCommand.InvokeAsync(args);
