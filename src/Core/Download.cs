@@ -20,6 +20,9 @@ public class Download
         this._filePath = filePath;
     }
 
+    /*
+     * 
+     */
     public async Task DownloadAsync(String downloadUrl)
     {
         var outputPath = Path.Combine(_filePath, PathHelper.getFilenameFromUrl(downloadUrl));
@@ -31,6 +34,13 @@ public class Download
         await response.Content.CopyToAsync(fileStream);
     }
     
+    /// <summary>
+    /// Downloads a file from the specified URL asynchronously with a custom filename.
+    /// </summary>
+    /// <param name="downloadUrl">The URL of the file to download.</param>
+    /// <param name="fileName">The custom filename to use for the downloaded file.</param>
+    /// <returns>A task that represents the asynchronous download operation.</returns>
+    /// <exception cref="HttpRequestException">Thrown when the HTTP request fails.</exception>
     public async Task DownloadAsync(String downloadUrl, String fileName)
     {
         var outputPath = Path.Combine(_filePath, fileName);
