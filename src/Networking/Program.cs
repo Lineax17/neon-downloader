@@ -4,7 +4,7 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        Console.WriteLine("Core Main Running");
+        Console.WriteLine("Networking Main Running");
         Console.WriteLine(PathHelper.getDownloadDirectory());
         Console.WriteLine(PathHelper.getHomeDirectory());
 

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{EF271EBC-F070-4CD3-9496-25D6042ED75E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Networking", "src\Networking\Networking.csproj", "{EF271EBC-F070-4CD3-9496-25D6042ED75E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLI", "src\CLI\CLI.csproj", "{88CA63DA-0963-42BC-AB6A-0953A0B19D88}"
 EndProject
