@@ -5,6 +5,10 @@ namespace CLI;
 
 public sealed class CLI
 {
+    /// <summary>
+    /// Creates and configures the root command for the Neon Downloader CLI application.
+    /// </summary>
+    /// <returns>A configured <see cref="RootCommand"/> with URL and file name options.</returns>
     public RootCommand CreateRootCommand()
     {
         var urlOption = new Option<string>(

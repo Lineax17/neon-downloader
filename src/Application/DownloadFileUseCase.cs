@@ -1,14 +1,28 @@
 namespace Application;
 using Core;
+
+/// <summary>
+/// Use case for downloading files from a URL.
+/// </summary>
 public sealed class DownloadFileUseCase
 {
     private readonly Download _downloader;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="DownloadFileUseCase"/> class.
+    /// </summary>
+    /// <param name="downloader">The downloader instance to use for downloading files.</param>
     public DownloadFileUseCase(Download downloader)
     {
         _downloader = downloader;
     }
 
+    /// <summary>
+    /// Executes the file download operation asynchronously.
+    /// </summary>
+    /// <param name="command">The download command containing the URL and optional file name.</param>
+    /// <param name="progress">The progress reporter for tracking download progress.</param>
+    /// <returns>A <see cref="DownloadResult"/> indicating the success or failure of the operation.</returns>
     public async Task<DownloadResult> ExecuteAsync(
         DownloadFileCommand command,
         IProgress<double>? progress = null)
