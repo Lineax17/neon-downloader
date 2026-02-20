@@ -34,10 +34,9 @@ public sealed class CLI
                 FileName = fileName
             };
 
-            var downloader = new Core.Download();
-            var useCase = new DownloadFileUseCase(downloader);
-            var progress = new Progress<double>(p => Console.Write($"\rDownload: {p:F1}%"));
-            var result = await useCase.ExecuteAsync(command, progress);
+            var orchestrator = new ApplicationOrchestrator(command);
+            var reporter = new ConsoleProgressReporter();
+            var result = await orchestrator.StartAsync(command, reporter);
             
             Console.WriteLine();
             if (result.Success)
@@ -53,5 +52,23 @@ public sealed class CLI
         }, urlOption, fileNameOption);
 
         return rootCommand;
+    }
+}
+
+/// <summary>
+/// Console implementation of the download progress reporter.
+/// </summary>
+internal sealed class ConsoleProgressReporter : IDownloadProgressReporter
+{
+    public double ReportProgress(double percentage)
+    {
+        Console.Write($"\rDownload: {percentage:F1}%");
+        return percentage;
+    }
+
+    public string ReportStatus(string message)
+    {
+        Console.WriteLine(message);
+        return message;
     }
 }
