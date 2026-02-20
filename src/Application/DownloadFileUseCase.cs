@@ -21,15 +21,15 @@ public sealed class DownloadFileUseCase
     /// Executes the file download operation asynchronously.
     /// </summary>
     /// <param name="command">The download command containing the URL and optional file name.</param>
-    /// <param name="progress">The progress reporter for tracking download progress.</param>
+    /// <param name="reporter">The progress reporter for tracking download progress.</param>
     /// <returns>A <see cref="DownloadResult"/> indicating the success or failure of the operation.</returns>
     public async Task<DownloadResult> ExecuteAsync(
         DownloadFileCommand command,
-        IProgress<double>? progress = null)
+        IDownloadProgressReporter? reporter = null)
     {
         _downloader.ProgressChanged += (sender, percentage) =>
         {
-            progress?.Report(percentage);
+            reporter?.ReportProgress(percentage);
         };
         
         if (string.IsNullOrEmpty(command.FileName))

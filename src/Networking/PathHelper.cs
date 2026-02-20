@@ -40,4 +40,10 @@ public static class PathHelper
         
         return filename;
     }
+    
+    public static String getHostNameFromUrl(String url)
+    {
+        var uri = new Uri(url);
+        return uri.Host;
+    }
 }
