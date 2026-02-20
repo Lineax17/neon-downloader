@@ -4,16 +4,13 @@ namespace Application;
 
 public class HostValidator
 {
-    private readonly Download _downloader;
-    
     public HostValidator(String url)
     {
-        
+        // No initialization needed for now, but this constructor can be used for future enhancements.
     }
-    
+
     public bool HostIsYoutube(String url)
     {
         return PathHelper.getHostNameFromUrl(url) == "www.youtube.com";
     }
-
 }
