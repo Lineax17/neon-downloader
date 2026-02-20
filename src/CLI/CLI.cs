@@ -28,15 +28,17 @@ public sealed class CLI
 
         rootCommand.SetHandler(async (url, fileName) =>
         {
+            var reporter = new ConsoleProgressReporter();
+            
             var command = new DownloadFileCommand
             {
                 Url = url,
-                FileName = fileName
+                FileName = fileName,
+                Reporter = reporter
             };
 
-            var orchestrator = new ApplicationOrchestrator(command);
-            var reporter = new ConsoleProgressReporter();
-            var result = await orchestrator.StartAsync(command, reporter);
+            var orchestrator = new ApplicationOrchestrator();
+            var result = await orchestrator.StartAsync(command);
             
             Console.WriteLine();
             if (result.Success)

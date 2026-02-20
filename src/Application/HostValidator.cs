@@ -4,7 +4,7 @@ namespace Application;
 
 public class HostValidator
 {
-    public HostValidator(String url)
+    public HostValidator()
     {
         // No initialization needed for now, but this constructor can be used for future enhancements.
     }

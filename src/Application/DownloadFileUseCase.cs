@@ -1,4 +1,5 @@
 namespace Application;
+
 using Core;
 
 /// <summary>
@@ -20,18 +21,14 @@ public sealed class DownloadFileUseCase
     /// <summary>
     /// Executes the file download operation asynchronously.
     /// </summary>
-    /// <param name="command">The download command containing the URL and optional file name.</param>
-    /// <param name="reporter">The progress reporter for tracking download progress.</param>
+    /// <param name="command">The download command containing the URL, optional file name, and optional progress reporter.</param>
     /// <returns>A <see cref="DownloadResult"/> indicating the success or failure of the operation.</returns>
-    public async Task<DownloadResult> ExecuteAsync(
-        DownloadFileCommand command,
-        IDownloadProgressReporter? reporter = null)
+    public async Task<DownloadResult> ExecuteAsync(DownloadFileCommand command)
     {
-        _downloader.ProgressChanged += (sender, percentage) =>
-        {
-            reporter?.ReportProgress(percentage);
-        };
+        var reporter = command.Reporter;
         
+        _downloader.ProgressChanged += (sender, percentage) => { reporter?.ReportProgress(percentage); };
+
         if (string.IsNullOrEmpty(command.FileName))
         {
             await _downloader.DownloadAsync(command.Url);

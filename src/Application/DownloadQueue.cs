@@ -2,9 +2,9 @@ namespace Application;
 
 public class DownloadQueue
 {
-    Queue<DownloadFileCommand> _queue;
+    private readonly Queue<DownloadFileCommand> _queue;
 
-    DownloadQueue()
+    public DownloadQueue()
     {
         _queue = new Queue<DownloadFileCommand>();
     }
@@ -13,7 +13,7 @@ public class DownloadQueue
     {
         _queue.Enqueue(command);
     }
-    
+
     public DownloadFileCommand Dequeue()
     {
         if (_queue.Count > 0)
@@ -25,4 +25,13 @@ public class DownloadQueue
             throw new InvalidOperationException("The download queue is empty.");
         }
     }
+
+    public int Count => _queue.Count;
+
+    public void Clear()
+    {
+        _queue.Clear();
+    }
+    
+    
 }

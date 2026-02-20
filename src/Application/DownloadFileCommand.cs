@@ -15,4 +15,9 @@ public sealed record DownloadFileCommand
     /// If not specified, the file name will be extracted from the URL.
     /// </summary>
     public string? FileName { get; init; }
+    
+    /// <summary>
+    /// Gets the optional progress reporter for tracking download progress.
+    /// </summary>
+    public IDownloadProgressReporter? Reporter { get; init; }
 }
