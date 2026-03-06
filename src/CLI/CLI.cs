@@ -1,5 +1,5 @@
 using System.CommandLine;
-using Application;
+using DownloadApp;
 
 namespace CLI;
 

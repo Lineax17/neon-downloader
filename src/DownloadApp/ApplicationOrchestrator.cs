@@ -1,6 +1,6 @@
 using Core;
 
-namespace Application;
+namespace DownloadApp;
 
 /// <summary>
 /// Orchestrates download operations with host validation and queue management.

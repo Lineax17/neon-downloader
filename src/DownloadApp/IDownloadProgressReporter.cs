@@ -1,4 +1,4 @@
-namespace Application;
+namespace DownloadApp;
 
 /// <summary>
 /// Defines methods for reporting download progress and status updates.

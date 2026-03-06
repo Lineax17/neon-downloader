@@ -1,4 +1,4 @@
-namespace Application;
+namespace DownloadApp;
 
 /// <summary>
 /// Represents a command to download a file from a URL.

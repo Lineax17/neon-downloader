@@ -4,10 +4,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Networking", "src\Networkin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLI", "src\CLI\CLI.csproj", "{88CA63DA-0963-42BC-AB6A-0953A0B19D88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Application\Application.csproj", "{FFA50A00-1E27-4FDA-9E81-E69EDE8464A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadApp", "src\DownloadApp\DownloadApp.csproj", "{FFA50A00-1E27-4FDA-9E81-E69EDE8464A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "src\UI\UI.csproj", "{2CA2BBFE-6F5E-48F2-B4BD-24A7A14D17AA}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,5 +33,9 @@ Global
 		{2CA2BBFE-6F5E-48F2-B4BD-24A7A14D17AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CA2BBFE-6F5E-48F2-B4BD-24A7A14D17AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CA2BBFE-6F5E-48F2-B4BD-24A7A14D17AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAC1812-8466-45DB-B597-CE73067FE25D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAC1812-8466-45DB-B597-CE73067FE25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAC1812-8466-45DB-B597-CE73067FE25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAC1812-8466-45DB-B597-CE73067FE25D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

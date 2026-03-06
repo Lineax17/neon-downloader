@@ -1,4 +1,4 @@
-namespace Application;
+namespace DownloadApp;
 
 /// <summary>
 /// Manages a queue of download commands for batch processing.

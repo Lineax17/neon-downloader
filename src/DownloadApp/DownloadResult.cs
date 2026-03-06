@@ -1,4 +1,4 @@
-namespace Application;
+namespace DownloadApp;
 
 /// <summary>
 /// Represents the result of a file download operation.

@@ -1,6 +1,6 @@
 using Core;
 
-namespace Application;
+namespace DownloadApp;
 
 /// <summary>
 /// Validates download hosts and provides host-specific filtering.
