@@ -2,7 +2,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:UI.ViewModels"
+             xmlns:models="using:UI.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="UI.Views.LinkgrabberView">
-    Linkgrabber View
+             x:Class="UI.Views.LinkgrabberView"
+             x:DataType="vm:LinkgrabberViewModel"
+             x:Name="Root">
+    <StackPanel Margin="16" Spacing="8">
+        <Button Content="Start All Downloads"
+                Command="{Binding StartAllDownloadsCommand}" />
+        
+        <ListBox ItemsSource="{Binding Items}">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:UrlItem">
+                    <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+                        <TextBlock Text="{Binding Url}" VerticalAlignment="Center" />
+                        <Button Grid.Column="1"
+                                Content="Start Download"
+                                Command="{Binding #Root.DataContext.StartDownloadCommand}"
+                                CommandParameter="{Binding .}" />
+                        <Button Grid.Column="2"
+                                Content="Delete"
+                                Command="{Binding #Root.DataContext.DeleteCommand}"
+                                CommandParameter="{Binding Id}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        
+    </StackPanel>
 </UserControl>

@@ -7,9 +7,6 @@
         Width="400" Height="200"
         WindowStartupLocation="CenterOwner">
 
-    <Design.DataContext>
-        <vm:AddUrlWindowViewModel/>
-    </Design.DataContext>
 
     <StackPanel Margin="20" Spacing="10">
         <TextBox Text="{Binding Url}" Watermark="Paste Url..."/>

@@ -10,6 +10,5 @@ public partial class AddUrlWindow : Window
     public AddUrlWindow()
     {
         InitializeComponent();
-        DataContext = new AddUrlWindowViewModel();
     }
 }
