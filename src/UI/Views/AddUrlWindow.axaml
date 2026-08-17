@@ -4,13 +4,28 @@
         x:Class="UI.Views.AddUrlWindow"
         x:DataType="vm:AddUrlWindowViewModel"
         Title="URL hinzufügen"
-        Width="400" Height="200"
+        Width="440"
+        SizeToContent="Height"
         WindowStartupLocation="CenterOwner">
 
+    <Border Background="{DynamicResource CardBrush}" Padding="24">
+        <StackPanel Spacing="12">
+            <TextBlock Text="URL hinzufügen" Classes="h1"/>
 
-    <StackPanel Margin="20" Spacing="10">
-        <TextBox Text="{Binding Url}" Watermark="Paste Url..."/>
-        <Button Content="Add" Command="{Binding ConfirmCommand}"/>
-    </StackPanel>
+            <TextBlock Text="Füge einen Link zur Linkgrabber-Liste hinzu."
+                       Classes="muted"
+                       TextWrapping="Wrap"/>
+
+            <TextBox Text="{Binding Url}"
+                     Watermark="https://example.com/file.zip"
+                     Padding="10,9"
+                     CornerRadius="8"/>
+
+            <Button Content="Hinzufügen"
+                    Classes="accent"
+                    HorizontalAlignment="Stretch"
+                    Command="{Binding ConfirmCommand}"/>
+        </StackPanel>
+    </Border>
 
 </Window>

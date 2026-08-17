@@ -4,31 +4,43 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:UI.ViewModels"
              xmlns:models="using:UI.Models"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="760" d:DesignHeight="600"
              x:Class="UI.Views.LinkgrabberView"
              x:DataType="vm:LinkgrabberViewModel">
-    <StackPanel Margin="16" Spacing="8">
-        <Button Content="Start All Downloads"
-                Command="{Binding StartAllDownloadsCommand}" />
-        
-        <ListBox ItemsSource="{Binding Items}">
+    <StackPanel Spacing="16">
+        <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Text="Linkgrabber" Classes="h1" VerticalAlignment="Center"/>
+            <Button Grid.Column="1"
+                    Content="Start All Downloads"
+                    Classes="accent"
+                    Command="{Binding StartAllDownloadsCommand}"/>
+        </Grid>
+
+        <ListBox ItemsSource="{Binding Items}"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 Padding="0">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:UrlItem">
-                    <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
-                        <TextBlock Text="{Binding Url}" VerticalAlignment="Center" />
-                        <Button Grid.Column="1"
-                                Content="Start Download"
-                                Command="{Binding $parent[UserControl].((vm:LinkgrabberViewModel)DataContext).StartDownloadCommand}"
-                                CommandParameter="{Binding .}" />
-                        <Button Grid.Column="2"
-                                Content="Delete"
-                                Command="{Binding $parent[UserControl].((vm:LinkgrabberViewModel)DataContext).DeleteCommand}"
-                                CommandParameter="{Binding Id}" />
-                    </Grid>
+                    <Border Classes="card" Margin="0,5" Padding="16,12">
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+                            <TextBlock Text="{Binding Url}"
+                                       FontWeight="Medium"
+                                       TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center"/>
+                            <Button Grid.Column="1"
+                                    Content="Start"
+                                    Classes="accent"
+                                    Command="{Binding $parent[UserControl].((vm:LinkgrabberViewModel)DataContext).StartDownloadCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            <Button Grid.Column="2"
+                                    Content="Delete"
+                                    Command="{Binding $parent[UserControl].((vm:LinkgrabberViewModel)DataContext).DeleteCommand}"
+                                    CommandParameter="{Binding Id}"/>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
-        
     </StackPanel>
 </UserControl>

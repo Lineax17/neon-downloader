@@ -4,23 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:UI.ViewModels"
              xmlns:models="using:UI.Models"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="760" d:DesignHeight="600"
              x:Class="UI.Views.DownloadsView"
              x:DataType="vm:DownloadsViewModel">
-    <StackPanel Margin="16" Spacing="8">
-        <ListBox ItemsSource="{Binding Items}">
+    <StackPanel Spacing="16">
+        <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Text="Downloads" Classes="h1" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding Items.Count, StringFormat={}{0} Downloads}"
+                       Classes="muted"
+                       VerticalAlignment="Center"/>
+        </Grid>
+
+        <ListBox ItemsSource="{Binding Items}"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 Padding="0">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="models:DownloadItem">
-                    <Grid ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="8" RowSpacing="4">
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Url}" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Status}" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Row="0" Grid.Column="2"
-                                   Text="{Binding Progress, StringFormat={}{0:F1}%}"
-                                   VerticalAlignment="Center"/>
-                        <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                                     Minimum="0" Maximum="100" Value="{Binding Progress}"/>
-                        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding ErrorMessage}" Foreground="Red"/>
-                    </Grid>
+                    <Border Classes="card" Margin="0,5" Padding="16,12">
+                        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto" ColumnSpacing="12" RowSpacing="8">
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                       Text="{Binding Url}"
+                                       FontWeight="Medium"
+                                       TextTrimming="CharacterEllipsis"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1"
+                                       Text="{Binding Status}"
+                                       FontWeight="SemiBold"
+                                       Foreground="{Binding StatusColor}"
+                                       VerticalAlignment="Center"/>
+
+                            <ProgressBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                         Minimum="0" Maximum="100"
+                                         Value="{Binding Progress}" Height="6"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0"
+                                       Text="{Binding Progress, StringFormat={}{0:F0}%}"
+                                       Classes="muted"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1"
+                                       Text="{Binding ErrorMessage}"
+                                       Foreground="#F44336"
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Right"
+                                       VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
