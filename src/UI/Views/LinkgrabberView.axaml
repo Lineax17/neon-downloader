@@ -6,8 +6,7 @@
              xmlns:models="using:UI.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UI.Views.LinkgrabberView"
-             x:DataType="vm:LinkgrabberViewModel"
-             x:Name="Root">
+             x:DataType="vm:LinkgrabberViewModel">
     <StackPanel Margin="16" Spacing="8">
         <Button Content="Start All Downloads"
                 Command="{Binding StartAllDownloadsCommand}" />
@@ -19,11 +18,11 @@
                         <TextBlock Text="{Binding Url}" VerticalAlignment="Center" />
                         <Button Grid.Column="1"
                                 Content="Start Download"
-                                Command="{Binding #Root.DataContext.StartDownloadCommand}"
+                                Command="{Binding $parent[UserControl].((vm:LinkgrabberViewModel)DataContext).StartDownloadCommand}"
                                 CommandParameter="{Binding .}" />
                         <Button Grid.Column="2"
                                 Content="Delete"
-                                Command="{Binding #Root.DataContext.DeleteCommand}"
+                                Command="{Binding $parent[UserControl].((vm:LinkgrabberViewModel)DataContext).DeleteCommand}"
                                 CommandParameter="{Binding Id}" />
                     </Grid>
                 </DataTemplate>

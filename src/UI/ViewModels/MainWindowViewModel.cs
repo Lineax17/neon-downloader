@@ -11,12 +11,15 @@ namespace UI.ViewModels;
 public partial class MainWindowViewModel : ViewModelBase
 {
     private readonly LinkQueueState _linkQueueState = new();
+    private readonly DownloadsViewModel _downloadsViewModel = new();
+    private readonly LinkgrabberViewModel _linkgrabberViewModel;
 
     [ObservableProperty] private ViewModelBase _currentPage;
 
     public MainWindowViewModel()
     {
-        _currentPage = new DownloadsViewModel();
+        _linkgrabberViewModel = new LinkgrabberViewModel(_linkQueueState, _downloadsViewModel);
+        _currentPage = _downloadsViewModel;
     }
 
     [RelayCommand]
@@ -44,12 +47,12 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void NavigateToDownloads()
     {
-        CurrentPage = new DownloadsViewModel();
+        CurrentPage = _downloadsViewModel;
     }
 
     [RelayCommand]
     private void NavigateToLinkgrabber()
     {
-        CurrentPage = new LinkgrabberViewModel(_linkQueueState);
+        CurrentPage = _linkgrabberViewModel;
     }
 }

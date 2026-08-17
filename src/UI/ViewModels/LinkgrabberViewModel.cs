@@ -1,5 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using UI.Models;
 
@@ -8,12 +10,14 @@ namespace UI.ViewModels;
 public partial class LinkgrabberViewModel : ViewModelBase
 {
     private readonly LinkQueueState _linkQueueState;
+    private readonly DownloadsViewModel _downloadsViewModel;
 
     public ReadOnlyObservableCollection<UrlItem> Items => _linkQueueState.Items;
 
-    public LinkgrabberViewModel(LinkQueueState linkQueueState)
+    public LinkgrabberViewModel(LinkQueueState linkQueueState, DownloadsViewModel downloadsViewModel)
     {
         _linkQueueState = linkQueueState;
+        _downloadsViewModel = downloadsViewModel;
     }
 
     [RelayCommand]
@@ -23,14 +27,21 @@ public partial class LinkgrabberViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    private void StartDownload(UrlItem? item)
+    private async Task StartDownload(UrlItem? item)
     {
-        // Placeholder for single-item download start.
+        if (item is null)
+            return;
+
+        _linkQueueState.Remove(item.Id);
+        await _downloadsViewModel.StartDownloadAsync(item);
     }
 
     [RelayCommand]
-    private void StartAllDownloads()
+    private async Task StartAllDownloads()
     {
-        // Placeholder for batch download start.
+        foreach (var item in _linkQueueState.Items.ToList())
+        {
+            await StartDownload(item);
+        }
     }
 }
